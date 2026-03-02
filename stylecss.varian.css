@@ -1,0 +1,166 @@
+/* style.css */
+
+/* Pengaturan dasar halaman */
+body {
+    /* Menggunakan font sans-serif modern agar mudah dibaca di layar */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Warna latar belakang krem pucat (warm white) yang nyaman di mata */
+    background-color: #fdfaf7;
+    /* Warna teks abu-abu gelap agar kontrasnya pas (tidak terlalu tajam seperti hitam pekat) */
+    color: #4a4a4a;
+    /* Jarak antar baris teks agar paragraf tidak terlihat sesak */
+    line-height: 1.6;
+}
+
+/* Bagian atas halaman */
+header {
+    background: linear-gradient(135deg, #ffffff 0%, #d8bedb 100%);
+    text-align: center;
+    position: relative;
+    margin-bottom: 0px;
+    transition: all 0.3s ease;
+}
+
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: #222;
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #555;
+    margin: auto;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Pembungkus utama konten agar tidak terlalu lebar di layar besar */
+.container {
+    flex: 1;
+    margin: auto; /* Menengahkan container */
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background-color: #bd99ba;
+}
+
+/* Sistem tata letak produk (Grid) */
+.product-grid {
+    display: grid;
+    /* Membuat grid otomatis: ukuran minimal 200px dan maksimal memenuhi ruang tersedia */
+    /* Ini membuat desain langsung responsif tanpa banyak media queries */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; /* Jarak antar kartu produk */
+}
+
+/* Gaya kartu produk */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px; /* Sudut melengkung halus */
+    text-align: center;
+    /* Bayangan tipis agar kartu terlihat 'mengapung' */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    /* Efek halus saat terjadi perubahan (seperti hover) */
+    transition: transform 0.3s;
+}
+
+/* Efek saat kartu diarahkan kursor */
+.card:hover {
+    /* Memberikan efek sedikit terangkat saat disentuh */
+    transform: translateY(-5px);
+}
+
+/* Tampilan detail produk */
+.product-detail {
+    display: flex; /* Menyusun foto dan info secara berdampingan */
+    gap: 40px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+/* Warna judul produk (hijau zaitun gelap) */
+.product-info h1 { color: #6b705c; }
+
+.social-links {
+    margin: 15px 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Gaya tombol aksi */
+/* --- Style Tombol di Dalam Kartu --- */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #a5a58d;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    background: #7a3d77;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-10px);
+    background: #c583c2;
+    box-shadow: 0 0 15px #a3349e;
+}
+
+.btn:active {
+    transform: scale(0.95) translateY(0);
+    background: #f3c3f1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.btn:active::after {
+    animation: btn-ripple 0.5s ease-out;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+footer {
+    background: linear-gradient(135deg, #ffffff 0%, #d8bedb 100%);
+    padding: 40px 20px;
+    text-align: center;
+    /* Garis pemisah antara konten utama dan informasi bawah */
+    border-top: 1px solid #eee;
+}

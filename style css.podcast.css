@@ -1,0 +1,264 @@
+/* --- Reset Dasar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Memilih font yang modern dan bersih */
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    /* Warna latar krem lembut untuk kesan estetik */
+    background-color: #fdfaf7;
+    color: #4a4a4a;
+    /* Mengatur tinggi minimal 100% dari layar agar footer bisa berada di bawah */
+    min-height: 100vh;
+    
+    /* STRUKTUR VERTIKAL: Menggunakan Flexbox */
+    display: flex;
+    /* Memaksa elemen di dalam body (header, main, footer) berjejer ke bawah */
+    flex-direction: column; 
+}
+
+/* Bagian atas halaman */
+header {
+    background: linear-gradient(135deg, #ffffff 0%, #d8bedb 100%);
+    text-align: center;
+    position: relative;
+    margin-bottom: 0px;
+    transition: all 0.3s ease;
+    height: 100px;
+}
+
+/* --- Container Utama --- */
+.container {
+    /* KUNCI: flex: 1 akan "menarik" bagian ini agar mengisi semua sisa ruang kosong.
+       Hal ini memastikan Footer selalu terdorong ke paling bawah layar. */
+    flex: 1; 
+    display: flex;
+    /* Menempatkan kartu pilihan tepat di tengah-tengah secara vertikal & horizontal */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #bd99ba;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.main-header p {
+    color: #666;
+}
+
+/* --- Grid System untuk Video --- */
+.video-grid {
+    display: grid;
+    /* Trik Ajaib: Membuat kolom otomatis.
+       Minimal lebar 320px, jika ada ruang sisa, bagi rata (1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem; /* Jarak antar kartu video */
+}
+
+/* --- Kartu Video (Video Card) Styling --- */
+.video-card {
+    background: white;
+    border-radius: 12px; /* Sudut membulat */
+    overflow: hidden; /* Agar konten di dalam tidak keluar dari sudut membulat */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Efek bayangan halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi halus saat di-hover */
+}
+
+/* Efek saat mouse diarahkan ke kartu */
+.video-card:hover {
+    transform: translateY(-5px); /* Kartu sedikit naik */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Bayangan lebih tegas */
+}
+
+/* --- PENTING: Trik Agar Video YouTube Responsif --- */
+/* Ini menjaga rasio aspek 16:9 agar video tidak gepeng */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Rasio 16:9 (9 dibagi 16 = 0.5625) */
+    height: 0;
+    background-color: #000;
+    overflow: hidden; /* Background hitam saat loading */
+}
+
+.video-wrapper img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    transition: transform 0.4s ease;
+}
+
+.video-card:hover img {
+    transform: scale(1.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none; /* Menghilangkan border bawaan iframe */
+}
+
+/* --- Konten Teks di Bawah Video --- */
+.card-content {
+    padding: 1.5rem;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 0, 0, 0.9);
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+/* Membuat ikon segitiga "Play" menggunakan teknik border */
+.play-button::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    /* Teknik border-trick untuk membuat segitiga */
+    border-style: solid;
+    /* Ukuran segitiga: tinggi 30px (15+15) dan alas 25px */
+    border-width: 15px 0 15px 25px;
+    /* Warna: transparan di sisi atas, bawah, kanan; putih di sisi kiri (membentuk segitiga ke kanan) */
+    border-color: transparent transparent transparent white;
+    /* Memberikan sedikit jarak agar ikon terlihat di tengah lingkaran */
+    margin-left: 5px;
+}
+
+/* Efek interaksi ketika kartu video disorot (hover) */
+.video-card:hover .play-button {
+    /* Mengubah warna latar tombol menjadi merah */
+    background-color: #ff0000;
+    /* Memberikan efek cahaya (glow) merah di sekitar tombol */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+/* Styling untuk judul di dalam kartu */
+.card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    /* Warna biru gelap keabu-abuan untuk kesan profesional */
+    color: #2c3e50;
+}
+
+/* Styling untuk deskripsi atau teks pendukung di bawah judul */
+.card-content p {
+    font-size: 0.9rem;
+    /* Warna abu-abu sedang agar tidak terlalu kontras dibanding judul */
+    color: #666;
+}
+
+/* --- Responsif Tambahan untuk Layar Sangat Kecil --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Di HP kecil, grid menjadi 1 kolom penuh */
+    .video-grid {
+         grid-template-columns: 1fr; 
+    }
+}
+
+/* --- Style Footer (Bagian Bawah) --- */
+footer {
+    background: linear-gradient(135deg, #ffffff 0%, #d8bedb 100%);
+    padding: 40px 20px;
+    text-align: center;
+    /* Garis pemisah antara konten utama dan informasi bawah */
+    border-top: 1px solid #eee;
+}
+
+.social-links {
+    margin: 15px 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* --- Style Tombol di Dalam Kartu --- */
+.btn-enter {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #a5a58d;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    background: #7a3d77;
+    text-decoration: none;
+}
+
+.btn-enter:hover {
+    transform: translateY(-10px);
+    background: #c583c2;
+    box-shadow: 0 0 15px #a3349e;
+}
+
+.btn-enter:active {
+    transform: scale(0.95) translateY(0);
+    background: #f3c3f1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.btn-enter:active::after {
+    animation: btn-ripple 0.5s ease-out;
+}
+
+.btn-enter::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.copyright {
+    /* Ukuran teks kecil untuk hak cipta */
+    font-size: 0.8rem;
+    color: #bbb;
+}

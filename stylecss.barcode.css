@@ -1,0 +1,460 @@
+/* --- Reset & Dasar (Pembersihan Awal) --- */
+* {
+    /* Menghilangkan jarak bawaan browser agar elemen menempel ke tepi */
+    margin: 0;
+    padding: 0;
+    /* Memastikan padding tidak menambah lebar elemen (menjaga layout tetap aman) */
+    box-sizing: border-box;
+}
+
+
+
+body {
+    /* Memilih font yang modern dan bersih */
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    /* Warna latar krem lembut untuk kesan estetik */
+    background-color: #fdfaf7;
+    color: #4a4a4a;
+    /* Mengatur tinggi minimal 100% dari layar agar footer bisa berada di bawah */
+    min-height: 100vh;
+    
+    /* STRUKTUR VERTIKAL: Menggunakan Flexbox */
+    display: flex;
+    /* Memaksa elemen di dalam body (header, main, footer) berjejer ke bawah */
+    flex-direction: column; 
+}
+
+
+
+/* --- Watermark (Tanda Air) --- */
+.watermark {
+    /* Membuat elemen menempel di satu posisi meski layar di-scroll */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    /* Transparansi agar tidak menutupi konten utama */
+    opacity: 0.2;
+    font-weight: bold;
+    color: #a5a58d;
+    /* Memastikan tanda air berada di lapisan paling depan */
+    z-index: 9999;
+    /* Memungkinkan kursor "menembus" teks ini agar tidak menghalangi klik */
+    pointer-events: none;
+}
+
+/* --- Style Header (Bagian Atas) --- */
+header {
+    background: linear-gradient(135deg, #ffffff 0%, #d8bedb 100%);
+    text-align: center;
+    position: relative;
+    margin-bottom: 0px;
+    transition: all 0.3s ease;
+}
+
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: #222;
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+header h1 span {
+    color: #7a3d77;
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.cta-text {
+    font-weight: 600;
+    color: #7a3d77;
+    font-style: italic;
+}
+
+.decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.icon {
+    font-size: 1.8rem;
+    color: #7a3d77;
+    background-color: rgba(122, 61, 119, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: rgba(122, 61, 119, 0.2);
+}
+
+.pillow {
+    width: 50px;
+    height: 30px;
+    background-color: #7a3d77;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    margin: 0 5px;
+    display: inline-block;
+    transform: rotate(15deg);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pillow::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    height: 8px;
+    background-color: #9a5a97;
+    border-radius: 10px;
+}
+
+.info-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.info-box h2 {
+    color: #7a3d77;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.info-box p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.features {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f5ff;
+    flex: 1;
+    min-width: 200px;
+}
+
+.feature i {
+    color: #7a3d77;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        padding: 40px 20px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    header p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    
+    .decoration {
+        gap: 10px;
+    }
+    
+    .icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .info-box {
+        padding: 20px;
+    }
+    
+    .features {
+        flex-direction: column;
+    }
+    
+    .feature {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .pillow {
+        width: 40px;
+        height: 25px;
+    }
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* --- Style Main (Bagian Tengah/Konten) --- */
+.gateway-wrapper {
+    /* KUNCI: flex: 1 akan "menarik" bagian ini agar mengisi semua sisa ruang kosong.
+       Hal ini memastikan Footer selalu terdorong ke paling bawah layar. */
+    flex: 1; 
+    display: flex;
+    /* Menempatkan kartu pilihan tepat di tengah-tengah secara vertikal & horizontal */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #bd99ba;
+}
+
+.choice-container {
+    display: flex;
+    /* Jarak antar kartu */
+    gap: 30px;
+    /* Kartu akan turun ke bawah secara otomatis jika layar sempit (seperti di HP) */
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.card-content h2 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.card-content p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- Card Style (Gaya Kartu Pilihan) --- */
+.choice-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 360px; /* Tetapkan tinggi */
+    min-width: 300px;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    flex: 1 1 300px;
+    max-width: 400px;
+}
+
+/* --- Efek Interaksi (Hover) --- */
+.choice-card:hover {
+    /* Kartu sedikit terangkat ke atas saat disentuh kursor */
+    transform: translateY(-10px);
+    /* Bayangan menjadi lebih tajam dan berwarna */
+    box-shadow: 0 20px 35px #ffffff;
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* --- Style Tombol di Dalam Kartu --- */
+.btn-enter {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #a5a58d;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    background: #7a3d77;
+    text-decoration: none;
+}
+
+.btn-enter:hover {
+    transform: translateY(-10px);
+    background: #c583c2;
+    box-shadow: 0 0 15px #a3349e;
+}
+
+.btn-enter:active {
+    transform: scale(0.95) translateY(0);
+    background: #f3c3f1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.btn-enter:active::after {
+    animation: btn-ripple 0.5s ease-out;
+}
+
+.btn-enter::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+@keyframes btn-ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 50;
+    }
+    100% {
+        transform: scale(50, 50);
+        opacity: 0;
+    }
+}
+
+/* --- Style Footer (Bagian Bawah) --- */
+footer {
+    background: linear-gradient(135deg, #ffffff 0%, #d8bedb 100%);
+    padding: 40px 20px;
+    text-align: center;
+    /* Garis pemisah antara konten utama dan informasi bawah */
+    border-top: 1px solid #eee;
+}
+
+.social-links {
+    margin: 15px 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.copyright {
+    /* Ukuran teks kecil untuk hak cipta */
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+/* --- Animasi Bunga Berguguran --- */
+
+.flower-container {
+    position: fixed;
+    top: -50px; /* Mulai dari luar layar atas */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Agar tidak menghalangi klik pada tombol */
+    z-index: 1000; /* Di atas konten tapi di bawah watermark */
+    overflow: hidden;
+}
+
+.flower {
+    position: absolute;
+    top: -10%;
+    user-select: none;
+    cursor: default;
+    animation: fall 10s linear infinite; /* Animasi jatuh terus menerus */
+}
+
+/* Variasi posisi dan kecepatan jatuh bunga agar terlihat alami */
+.flower:nth-child(1) { left: 2%; animation-delay: 0s; font-size: 1rem; }
+.flower:nth-child(2) { left: 80%; animation-delay: 13s; font-size: 1.5rem; }
+.flower:nth-child(3) { left: 60%; animation-delay: 4s; font-size: 1.2rem; }
+.flower:nth-child(4) { left: 55%; animation-delay: 1s; font-size: 1.8rem; }
+.flower:nth-child(5) { left: 95%; animation-delay: 12s; font-size: 1.3rem; }
+.flower:nth-child(6) { left: 10%; animation-delay: 3s; font-size: 1.4rem; }
+.flower:nth-child(7) { left: 85%; animation-delay: 7s; font-size: 2rem; }
+.flower:nth-child(8) { left: 15%; animation-delay: 5s; font-size: 1.6rem; }
+.flower:nth-child(9) { left: 45%; animation-delay: 4s; font-size: 1.8rem; }
+.flower:nth-child(10) { left: 90%; animation-delay: 1s; font-size: 1rem; }
+.flower:nth-child(11) { left: 35%; animation-delay: 6ms; font-size: 1.3rem; }
+.flower:nth-child(12) { left: 75%; animation-delay: 2s; font-size: 1.7rem; }
+.flower:nth-child(13) { left: 20%; animation-delay: 4s; font-size: 2.3rem; }
+.flower:nth-child(14) { left: 68%; animation-delay: 15s; font-size: 1.2rem; }
+.flower:nth-child(15) { left: 65%; animation-delay: 8s; font-size: 1.1rem; }
+.flower:nth-child(16) { left: 25%; animation-delay: 9s; font-size: 1.6rem; }
+
+/* Logika gerakan jatuh dan bergoyang */
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Muncul perlahan saat mulai jatuh */
+    }
+    100% {
+        top: 110%; /* Jatuh sampai melewati bawah layar */
+        /* Gerakan zig-zag (sway) dan berputar */
+        transform: translateX(100px) rotate(360deg);
+        opacity: 0.3; /* Menghilang perlahan di bawah */
+    }
+}
