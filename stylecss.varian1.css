@@ -11,6 +11,7 @@ body {
     color: #4a4a4a;
     /* Memberikan ruang antar baris tulisan agar paragraf mudah dibaca */
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* --- Watermark (Tanda Air) --- */
@@ -75,19 +76,10 @@ header h1 {
     box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
-
-
-/* --- Pengaturan Gambar --- */
-.product-image {
-    flex: 1; /* Mengambil ruang yang tersedia secara fleksibel */
-    min-width: 300px; /* Lebar minimal agar gambar tidak terlalu kecil */
-}
-
 .product-image img {
-    width: 100%;
+    max-width: 100%;
     border-radius: 15px;
     /* Menjaga proporsi gambar tetap bagus meskipun dimensinya berbeda */
-    object-fit: cover;
 }
 
 /* --- Info Produk (Teks & Harga) --- */
